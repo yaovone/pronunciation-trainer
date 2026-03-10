@@ -1,1 +1,78 @@
+<!DOCTYPE html>
+<html>
+<body style="font-family:Arial;text-align:center;margin-top:100px">
 
+<h1>Lesson 8 Pronunciation</h1>
+
+<div id="word" style="font-size:60px;margin:40px"></div>
+
+<button onclick="speak()" style="font-size:30px">🔊 Listen</button>
+<button onclick="record()" style="font-size:30px">🎤 Speak</button>
+
+<div id="result" style="font-size:40px;margin-top:30px"></div>
+
+<script>
+
+let words=[
+"act","ants","ant","boat","coat","coast","boast","toast",
+"bacon","basic","tonic","sonic","attic",
+"static","action","station","antibiotics","botanist",
+"titanic","roast","picnic","fiction","friction"
+]
+
+let index=0
+
+function showWord(){
+document.getElementById("word").innerText=words[index]
+document.getElementById("result").innerText=""
+}
+
+function speak(){
+
+let utter=new SpeechSynthesisUtterance(words[index])
+utter.lang="en-US"
+speechSynthesis.speak(utter)
+
+}
+
+function record(){
+
+let recognition=new(window.SpeechRecognition||window.webkitSpeechRecognition)()
+
+recognition.lang="en-US"
+
+recognition.start()
+
+recognition.onresult=function(event){
+
+let spoken=event.results[0][0].transcript.toLowerCase()
+
+if(spoken===words[index]){
+
+document.getElementById("result").innerText="Great!"
+
+index++
+
+if(index>=words.length){
+document.getElementById("word").innerText="Finished!"
+return
+}
+
+setTimeout(showWord,1000)
+
+}else{
+
+document.getElementById("result").innerText="Try Again"
+
+}
+
+}
+
+}
+
+showWord()
+
+</script>
+
+</body>
+</html>
