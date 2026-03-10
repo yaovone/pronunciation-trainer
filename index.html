@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
-<body style="font-family:Arial;text-align:center;margin-top:100px">
+
+<body style="font-family:Arial;text-align:center;margin-top:60px">
 
 <h1>Lesson 8 Pronunciation</h1>
 
-<div id="word" style="font-size:60px;margin:40px"></div>
+<div id="word" style="font-size:70px;margin:30px"></div>
 
-<button onclick="speak()" style="font-size:30px">🔊 Listen</button>
-<button onclick="record()" style="font-size:30px">🎤 Speak</button>
+<img id="wordImage" width="300" style="margin:20px">
+
+<br>
+
+<button onclick="speak()" style="font-size:30px;margin:10px">🔊 Listen</button>
+
+<button onclick="record()" style="font-size:30px;margin:10px">🎤 Speak</button>
 
 <div id="result" style="font-size:40px;margin-top:30px"></div>
 
@@ -20,17 +26,50 @@ let words=[
 "titanic","roast","picnic","fiction","friction"
 ]
 
+let images=[
+"images/act.png",
+"images/ants.png",
+"images/ant.png",
+"images/boat.png",
+"images/coat.png",
+"images/coast.png",
+"images/boast.png",
+"images/toast.png",
+"images/bacon.png",
+"images/basic.png",
+"images/tonic.png",
+"images/sonic.png",
+"images/attic.png",
+"images/static.png",
+"images/action.png",
+"images/station.png",
+"images/antibiotics.png",
+"images/botanist.png",
+"images/titanic.png",
+"images/roast.png",
+"images/picnic.png",
+"images/fiction.png",
+"images/friction.png"
+]
+
 let index=0
 
 function showWord(){
+
 document.getElementById("word").innerText=words[index]
+
+document.getElementById("wordImage").src=images[index]
+
 document.getElementById("result").innerText=""
+
 }
 
 function speak(){
 
 let utter=new SpeechSynthesisUtterance(words[index])
+
 utter.lang="en-US"
+
 speechSynthesis.speak(utter)
 
 }
@@ -54,8 +93,13 @@ document.getElementById("result").innerText="Great!"
 index++
 
 if(index>=words.length){
+
 document.getElementById("word").innerText="Finished!"
+
+document.getElementById("wordImage").style.display="none"
+
 return
+
 }
 
 setTimeout(showWord,1000)
