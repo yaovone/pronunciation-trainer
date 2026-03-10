@@ -7,7 +7,7 @@
 
 <div id="word" style="font-size:70px;margin:30px"></div>
 
-<img id="wordImage" width="300" style="margin:20px">
+<img id="wordImage" style="width:300px;margin:20px">
 
 <br>
 
@@ -33,17 +33,17 @@ let images=[
 "https://source.unsplash.com/400x400/?boat",
 "https://source.unsplash.com/400x400/?coat",
 "https://source.unsplash.com/400x400/?coast",
-"https://source.unsplash.com/400x400/?boast",
 "https://source.unsplash.com/400x400/?toast",
+"https://source.unsplash.com/400x400/?bacon",
 "https://source.unsplash.com/400x400/?bacon",
 "https://source.unsplash.com/400x400/?basic",
 "https://source.unsplash.com/400x400/?tonic",
-"https://source.unsplash.com/400x400/?sonic",
+"https://source.unsplash.com/400x400/?sound",
 "https://source.unsplash.com/400x400/?attic",
 "https://source.unsplash.com/400x400/?static",
 "https://source.unsplash.com/400x400/?action",
 "https://source.unsplash.com/400x400/?station",
-"https://source.unsplash.com/400x400/?antibiotics",
+"https://source.unsplash.com/400x400/?medicine",
 "https://source.unsplash.com/400x400/?botanist",
 "https://source.unsplash.com/400x400/?titanic",
 "https://source.unsplash.com/400x400/?roast",
@@ -86,7 +86,7 @@ recognition.onresult=function(event){
 
 let spoken=event.results[0][0].transcript.toLowerCase()
 
-if(spoken===words[index]){
+if(spoken.includes(words[index])){
 
 document.getElementById("result").innerText="Great!"
 
